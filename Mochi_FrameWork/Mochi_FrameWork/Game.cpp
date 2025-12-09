@@ -65,7 +65,9 @@ namespace MochiFramework::Core
 
 	void Game::GenerateOutput()
 	{
+		Renderer::DrawStart();
 		mSceneStack.Draw();
+		Renderer::DrawEnd();
 	}
 
 	bool Game::ShouldQuit() const {

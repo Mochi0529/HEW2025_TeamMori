@@ -26,6 +26,8 @@ namespace MochiFramework::GameObjects
 		mComponents.clear();
 	}
 
+	void GameObject::Init(){}
+
 	void GameObject::Input()
 	{
 		if (mState == eActive) { // ó‘Ô‚ªActive‚È‚ç

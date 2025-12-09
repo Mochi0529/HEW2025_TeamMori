@@ -7,6 +7,7 @@
 #include <typeindex>
 
 #include "FrameworkFacade.h"
+#include "GameObject.h"
 
 namespace MochiFramework::InputSystem { class InputManager; }
 namespace MochiFramework::GameObjects { class GameObject; template <typename Derived> class GameObjectBase; }
@@ -83,34 +84,47 @@ namespace MochiFramework::SceneSystem
 
     template <typename T, typename... Args>
     T* Scene::CreateGameObject(Args&&... args) {
-        static_assert(std::is_base_of<MochiFramework::GameObjects::GameObjectBase<T>, T>::value, "You must inherit from GameObjectBase<T>");
+        static_assert(std::is_base_of<MochiFramework::GameObjects::GameObjectBase<T>, T>::value,
+            "You must inherit from GameObjectBase<T>");
 
         auto obj = std::make_unique<T>(this, std::forward<Args>(args)...);
         T* rawPtr = obj.get();
 
         if (mIsProcessingObjects) {
+            // フレーム中は保留リストに入れる（Init は保留解除時に行う）
             mPendingGameObjects.emplace_back(std::move(obj));
         }
         else {
+            // 通常フロー：すぐ登録して Init を呼ぶ
             mGameObjects.emplace_back(std::move(obj));
+            // 最後に入れたオブジェクトのポインタは rawPtr と一致するはず
+            auto* added = mGameObjects.back().get();
+
+            try {
+                added->Init();
+            }
+            catch (...) {
+                // Init に失敗したら登録を取り消して再送出（必要ならログ等）
+                mGameObjects.pop_back();
+                throw;
+            }
         }
 
         return rawPtr;
     }
 
-    template <typename T>
-    std::vector<T*> Scene::FindByType() {
-        std::vector<T*> result;
-        const std::type_index targetType = typeid(T);
+        template <typename T>
+        std::vector<T*> Scene::FindByType() {
+            std::vector<T*> result;
+            const std::type_index targetType = typeid(T);
 
-        for (auto& obj : mGameObjects) {
-            if (obj->GetType() == targetType) {
-                if (obj->GetState() == MochiFramework::GameObjects::GameObject::eActive) {
-                    result.push_back(static_cast<T*>(obj.get()));
+            for (auto& obj : mGameObjects) {
+                if (obj->GetType() == targetType) {
+                    if (obj->GetState() == MochiFramework::GameObjects::GameObject::eActive) {
+                        result.push_back(static_cast<T*>(obj.get()));
+                    }
                 }
             }
+            return result;
         }
-        return result;
-    }
-
 } // namespace MochiFramework::SceneSystem

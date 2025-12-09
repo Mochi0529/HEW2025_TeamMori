@@ -116,9 +116,23 @@ namespace MochiFramework::SceneSystem
 	}
 
 	void Scene::CommitPendingObjects() {
-		for (auto& obj : mPendingGameObjects) {
+		while (!mPendingGameObjects.empty()) {
+			// 取り出して mGameObjects に移す
+			auto obj = std::move(mPendingGameObjects[0]);
+			mPendingGameObjects.erase(mPendingGameObjects.begin());
+
+			GameObject* rawPtr = obj.get();
 			mGameObjects.emplace_back(std::move(obj));
+			GameObject* added = mGameObjects.back().get();
+
+			try {
+				added->Init();
+			}
+			catch (...) {
+				// Init に失敗したら最後尾の要素を削除して例外を再送出またはログ処理
+				mGameObjects.pop_back();
+				throw;
+			}
 		}
-		mPendingGameObjects.clear();
 	}
 } // namespace MochiFramework::SceneSystem

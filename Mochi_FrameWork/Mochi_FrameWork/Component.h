@@ -28,6 +28,7 @@ namespace MochiFramework::Components
 		virtual ~Component(); // デストラクタは仮想関数にすることで、派生クラスのデストラクタが正しく呼ばれるようにする
 
 		// ===  公開関数（外部インターフェース）  === //
+		virtual void Init();
 
 		virtual void Input();
 		virtual void Update(const float deltaTime);

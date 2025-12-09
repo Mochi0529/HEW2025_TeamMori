@@ -44,6 +44,7 @@ namespace MochiFramework::GameObjects
 		virtual ~GameObject(); 
 
 		// ===  公開関数（外部インターフェース）  === //
+		virtual void Init();
 
 		void Input();
 		void Update(const float deltaTime);
@@ -112,26 +113,43 @@ namespace MochiFramework::GameObjects
 
 	template <typename T, typename... Args>
 	T* GameObject::AddComponent(Args&&... args) {
-		static_assert(std::is_base_of<MochiFramework::Components::ComponentBase<T>, T>::value, "You must inherit from ComponentBase<T>");
+		static_assert(std::is_base_of<MochiFramework::Components::ComponentBase<T>, T>::value,
+			"You must inherit from ComponentBase<T>");
 
 		if (mComponentMap.count(typeid(T)) > 0) {
-			throw std::runtime_error(std::string("Component already exists: ") + typeid(T).name()); // 存在していた場合に例外を投げて処理を中断
-
+			throw std::runtime_error(std::string("Component already exists: ") + typeid(T).name());
 		}
-		T* comp = new T(this, std::forward<Args>(args)...); //std::forward<Args>(args)...で引数を完璧転送
+
+		// コンストラクタ（コンポーネント生成）
+		T* comp = new T(this, std::forward<Args>(args)...);
 		std::unique_ptr<MochiFramework::Components::Component> uptr(comp);
 
-		// 登録済みコンポーネントの中で、comp より更新順序（UpdateOrder）が大きい最初の位置を探す
-		auto iter = std::find_if(mComponents.begin(), mComponents.end(),
+		// UpdateOrder に基づく挿入位置を決める
+		auto iter = std::find_if(
+			mComponents.begin(), mComponents.end(),
 			[comp](const std::unique_ptr<MochiFramework::Components::Component>& existing) {
 				return comp->GetUpdateOrder() < existing->GetUpdateOrder();
-			});
+			}
+		);
 
-		auto inserted = mComponents.insert(iter, std::move(uptr)); // 優先度順を維持したまま、適切な位置に挿入
+		// コンポーネントリストに挿入
+		auto inserted = mComponents.insert(iter, std::move(uptr));
 
-		mComponentMap[typeid(T)] = comp; // コンポーネントマップに登録(typeid(T)：型 T の一意な型情報)
+		// マップに登録
+		mComponentMap[typeid(T)] = comp;
 
-		return static_cast<T*>(inserted->get()); // 呼び出し元がすぐに操作できるよう、元の型でポインタを返す
+		try {
+			comp->Init();
+		}
+		catch (...) {
+			// 失敗時はコンポーネントを削除して例外を再送出
+			mComponents.erase(inserted);
+			mComponentMap.erase(typeid(T));
+			throw;
+		}
+		// ===============================
+
+		return static_cast<T*>(inserted->get());
 	}
 
 	template <typename T>
