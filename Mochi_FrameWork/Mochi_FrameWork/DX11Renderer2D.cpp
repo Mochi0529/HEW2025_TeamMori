@@ -10,6 +10,11 @@ namespace MochiFramework::Components {
 	{
 	}
 
+	void DX11Renderer2D::Init()
+	{
+
+	}
+
 	
 
 } // namespace MochiFramework::Components

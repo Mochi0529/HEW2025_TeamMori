@@ -7,6 +7,8 @@ namespace MochiFramework::Components {
 	public:
 		explicit DX11Renderer2D(MochiFramework::GameObjects::GameObject* owner);
 
+		void Init() override;
+
 	private:
 		Shader mShader;
 

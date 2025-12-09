@@ -1,6 +1,7 @@
 #pragma once
 #include <cmath>
 #include <ostream>
+#include <SimpleMath.h>
 
 namespace MochiFramework::Math {
 
@@ -52,6 +53,7 @@ namespace MochiFramework::Math {
         // 定数式不可(constexprを使用していない)
 
         //-- ユーティリティ --//
-        static Vector3 MakeFloat3(float x, float y, float z);
+        static Vector3 MakeVector3(float x, float y, float z);
+        DirectX::SimpleMath::Vector3 ToDirectX();
     };
 } // namespace Math

@@ -67,9 +67,13 @@ namespace MochiFramework::Math {
     const Vector3 Vector3::back     = Vector3( 0.0f,  0.0f, -1.0f);
 
     //-- ユーティリティ --//
-    Vector3 Vector3::MakeFloat3(float x, float y, float z) {
+    Vector3 Vector3::MakeVector3(float x, float y, float z) {
         return { x, y, z };
     }
 
+    DirectX::SimpleMath::Vector3 Vector3::ToDirectX()
+    {
+        return DirectX::SimpleMath::Vector3(x, y, z);
+    }
 
 } // namespace Math
