@@ -171,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Area.h" />
     <ClInclude Include="AssimpPerse.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
@@ -192,6 +193,7 @@
     <ClInclude Include="KadaiGameObject.h" />
     <ClInclude Include="KadaiGameObject2.h" />
     <ClInclude Include="KadaiScene.h" />
+    <ClInclude Include="Layer.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Matrix4.h" />
@@ -208,6 +210,7 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="SolidObject.h" />
     <ClInclude Include="sound.h" />
+    <ClInclude Include="Stage.h" />
     <ClInclude Include="StaticMesh.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="Texture.h" />
