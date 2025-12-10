@@ -160,6 +160,7 @@
     <ClCompile Include="SceneEventProcessor.cpp" />
     <ClCompile Include="SceneStack.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="SolidObject.cpp" />
     <ClCompile Include="sound.cpp" />
     <ClCompile Include="StaticMesh.cpp" />
     <ClCompile Include="stb_image.cpp" />
@@ -205,6 +206,7 @@
     <ClInclude Include="SceneEventProcessor.h" />
     <ClInclude Include="SceneStack.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="SolidObject.h" />
     <ClInclude Include="sound.h" />
     <ClInclude Include="StaticMesh.h" />
     <ClInclude Include="stb_image.h" />
