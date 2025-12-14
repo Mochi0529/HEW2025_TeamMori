@@ -48,6 +48,7 @@ namespace MochiFramework::GameObjects
 
 		void Input();
 		void Update(const float deltaTime);
+		void Draw();
 
 		void RequestDestroy();
 

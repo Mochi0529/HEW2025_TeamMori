@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ソース ファイル\Component">
-      <UniqueIdentifier>{72d5231f-4baf-4b27-96d7-0348672cedce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Component\Base">
-      <UniqueIdentifier>{d0d6ed1e-8e72-4669-94fe-9ac676897a25}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\GameManager">
       <UniqueIdentifier>{6406fde1-5898-48a3-875c-5a124bee7e6b}</UniqueIdentifier>
     </Filter>
@@ -60,6 +54,12 @@
     </Filter>
     <Filter Include="ヘッダー ファイル\DX11">
       <UniqueIdentifier>{6eb274fc-2a5a-4776-9354-4a188e434203}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Component">
+      <UniqueIdentifier>{72d5231f-4baf-4b27-96d7-0348672cedce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Component\Base">
+      <UniqueIdentifier>{d0d6ed1e-8e72-4669-94fe-9ac676897a25}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -159,11 +159,11 @@
     <ClCompile Include="DX11Renderer2D.cpp">
       <Filter>ソース ファイル\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="SolidObject.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ヘッダー ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>ソース ファイル\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -296,9 +296,6 @@
     <ClInclude Include="DX11Renderer2D.h">
       <Filter>ソース ファイル\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="SolidObject.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -310,6 +307,9 @@
     </ClInclude>
     <ClInclude Include="Layer.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>ソース ファイル\GameObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

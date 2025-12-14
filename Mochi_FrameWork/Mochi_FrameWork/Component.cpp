@@ -19,6 +19,7 @@ namespace MochiFramework::Components
 	void Component::Init() {}
 	void Component::Input(){}
 	void Component::Update(const float deltaTime){}
+	void Component::Draw(){}
 	void Component::OnOwnerDestroy(){}
 
 	GameObject* Component::GetOwner() const

@@ -77,7 +77,9 @@ namespace MochiFramework::SceneSystem
 
 	void Scene::Draw()
 	{
-
+		for (const auto& obj : mGameObjects) {
+			obj->Draw();
+		}
 	}
 
 	bool Scene::ShouldDrawSceneBelow() const

@@ -52,6 +52,15 @@ namespace MochiFramework::GameObjects
 		}
 	}
 
+	void GameObject::Draw()
+	{
+		if (mState == eActive) { // ó‘Ô‚ªActive‚È‚ç
+			for (const auto& component : mComponents) {
+				component->Draw();
+			}
+		}
+	}
+
 	void GameObject::RequestDestroy()
 	{
 		SetState(eDead);

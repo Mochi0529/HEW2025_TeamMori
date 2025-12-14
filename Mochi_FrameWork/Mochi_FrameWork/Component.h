@@ -32,6 +32,7 @@ namespace MochiFramework::Components
 
 		virtual void Input();
 		virtual void Update(const float deltaTime);
+		virtual void Draw();
 
 		virtual void OnOwnerDestroy();  // オーナー削除される瞬間の処理
 
