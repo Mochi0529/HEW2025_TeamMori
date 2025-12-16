@@ -5,12 +5,11 @@
 #include "IndexBuffer.h"
 #include "Texture.h"
 #include "Material.h"
-#include "Camera.h"
 
 namespace MochiFramework::Components {
 	class DX11Renderer2D : public MochiFramework::Components::ComponentBase<DX11Renderer2D> {
 	public:
-		explicit DX11Renderer2D(MochiFramework::GameObjects::GameObject* owner, Camera* camera);
+		explicit DX11Renderer2D(MochiFramework::GameObjects::GameObject* owner);
 
 		void Init() override;
 		void Update(const float deltaTime) override;
@@ -42,8 +41,6 @@ namespace MochiFramework::Components {
 		float mNumV = 1;
 		float mSplitX = 1;
 		float mSplitY = 1;
-
-		Camera* mCamera;
 	};
 } // namespace MochiFramework::Components
 

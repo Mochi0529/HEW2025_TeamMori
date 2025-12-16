@@ -63,7 +63,7 @@ struct MATERIAL
 	DirectX::SimpleMath::Color Diffuse;		// 拡散反射（≒カラー）
 	DirectX::SimpleMath::Color Specular;	// 鏡面反射
 	DirectX::SimpleMath::Color Emission;	// 発光
-	float Shiness;			// 光沢の滑らかさ
+	float Shininess;			// 光沢の滑らかさ
 	BOOL TextureEnable;		// テクスチャを使うか否かのフラグ
 	BOOL Dummy[2];
 };

@@ -2,6 +2,8 @@
 
 #include "GameObject.h"
 #include "Transform.h"
+#include "Scene.h"
+#include "Camera.h"
 
 using namespace MochiFramework::GameObjects;
 
@@ -9,9 +11,8 @@ using namespace std;
 using namespace DirectX::SimpleMath;
 
 namespace MochiFramework::Components {
-	DX11Renderer2D::DX11Renderer2D(GameObject* owner, Camera* camera)
+	DX11Renderer2D::DX11Renderer2D(GameObject* owner)
 		: ComponentBase<DX11Renderer2D>(owner)
-		, mCamera(camera)
 	{
 	}
 
@@ -66,8 +67,10 @@ namespace MochiFramework::Components {
 
 	void DX11Renderer2D::Draw()
 	{
+		auto camera = GetOwner()->GetScene()->FindByName("MainCamera");
+
 		//ƒJƒƒ‰‚ð‘I‘ð‚·‚é
-		mCamera->SetCamera(1);
+		camera->GetComponent<Camera>()->SetCamera(1);
 
 		Transform* tfComp = GetOwner()->GetComponent<Transform>();
 
