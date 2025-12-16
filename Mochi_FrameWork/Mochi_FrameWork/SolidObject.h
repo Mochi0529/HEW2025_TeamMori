@@ -45,10 +45,15 @@ public:
 
 	static void SolidObjectCounter();	//	オブジェクトの個数を数える
 
+	void SetIsCollision(bool isCollision);
+	bool GetIsCollision();
+
+
 	//	情報を変更する
 	void SetPosition(float x, float y, float z);	//	座標変更
 	void SetScale(float x, float y, float z);	//	サイズ変更
 	
-
+	void ChangeCollision();	//	当たり判定の変更
+	void ChangeColor();		//	色の変更
 	
 };

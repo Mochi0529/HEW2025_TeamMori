@@ -12,7 +12,7 @@ int  SolidObject::m_objectCounter = 0;	//	現在のオブジェクトの数を代入
 void SolidObject::SolidObjectCounter()
 {
 	system("cls");
-	std::cout << m_objectCounter;
+	std::cout <<"ソリッドオブジェクト数:" << m_objectCounter;
 
 }
 
@@ -22,6 +22,14 @@ void SolidObject::Init()
 	SetPosition(10.0f, 10.0f, 0.0f);
 	SetScale(10.0f, 10.0f, 0.0f);
 	
+	//	画像を突っ込む
+	auto* ic = GetComponent<MochiFramework::Components::DX11Renderer2D>();
+	if (!ic)return;
+
+	ic->SetTexture("asset/test.png");	//	画像の位置を記述しよう
+
+
+
 }
 
 
@@ -50,5 +58,42 @@ void SolidObject::SetScale(float x, float y, float z)
 	newScale.y = y;
 	newScale.z = z;
 	ic->SetLocalScale(newScale);
+
+}
+
+//	メンバーの当たり判定のフラグを変更し
+//	切り替え時の処理をする
+void SolidObject::SetIsCollision(bool isCollision)
+{
+	m_isCollision = isCollision;
+	ChangeCollision();
+	ChangeColor();
+}
+
+//	現在のオブジェクトの当たり判定の状況を渡す
+bool SolidObject::GetIsCollision()
+{
+	return m_isCollision;
+}
+
+//	当たり判定の変更
+void SolidObject::ChangeCollision()
+{
+	//	当たり判定を切り替える
+	
+	//	Box2Dなどで当たり判定を切り替える
+	
+}
+
+//	色の切り替え
+void SolidObject::ChangeColor()
+{
+	auto* ic = GetComponent<MochiFramework::Components::DX11Renderer2D>();
+	if (!ic)return;
+
+	//	todo: 持木にDX11Renderer2Dのカラーを変更できる関数を作っていいかを聞く
+	
+
+	
 
 }
