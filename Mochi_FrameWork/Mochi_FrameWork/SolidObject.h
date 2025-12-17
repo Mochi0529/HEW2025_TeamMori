@@ -39,15 +39,15 @@ public:
 
 	}
 
-	void Init();	//	情報の初期化
-
+	void Init()override;	//	情報の初期化
 	void UpdateGameObject() override;	//	更新処理
+	void Draw();	//描画処理
+
 
 	static void SolidObjectCounter();	//	オブジェクトの個数を数える
 
 	void SetIsCollision(bool isCollision);
 	bool GetIsCollision();
-
 
 	//	情報を変更する
 	void SetPosition(float x, float y, float z);	//	座標変更

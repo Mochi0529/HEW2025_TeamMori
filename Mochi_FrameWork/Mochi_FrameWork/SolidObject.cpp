@@ -19,20 +19,39 @@ void SolidObject::SolidObjectCounter()
 //	情報の初期化
 void SolidObject::Init()
 {
-	SetPosition(10.0f, 10.0f, 0.0f);
-	SetScale(10.0f, 10.0f, 0.0f);
-	
 	//	画像を突っ込む
 	auto* ic = GetComponent<MochiFramework::Components::DX11Renderer2D>();
 	if (!ic)return;
 
-	ic->SetTexture("asset/test.png");	//	画像の位置を記述しよう
+	ic->SetTexture("asset/test.png");	//	画像のファイル位置を記述しよう
+	SetPosition(10.0f, 10.0f, 0.0f);
+	SetScale(100.0f, 100.0f, 0.0f);
+}
+
+//	アップデート
+void SolidObject::UpdateGameObject()
+{
 
 
+
+
+
+
+
+	Draw();	//	画像の描画
+}
+
+//	画像の描画
+void SolidObject::Draw()
+{
+	auto* ic = GetComponent<MochiFramework::Components::DX11Renderer2D>();
+	if (!ic)return;
+
+	ic->Draw();
 
 }
 
-
+//	座標の変更
 void SolidObject::SetPosition(float x, float y, float z)
 {
 	auto* ic = GetComponent<MochiFramework::Components::Transform>();

@@ -14,6 +14,9 @@
 class PlayerCharacter:public MochiFramework::GameObjects::GameObjectBase<PlayerCharacter>
 {
 private:
+	//	ステータス
+	float m_speed = 0.0f;
+	
 
 public:
 	explicit PlayerCharacter(MochiFramework::SceneSystem::Scene* scene) : GameObjectBase(scene)
@@ -37,6 +40,7 @@ public:
 	}
 
 	void UpdateGameObject() override;
+	void Draw();	//	描画
 
 	void MoveRaght();	//	右移動
 	void MoveLeft();	//	左移動

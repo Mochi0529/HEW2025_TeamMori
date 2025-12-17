@@ -10,7 +10,6 @@
 
 void PlayerCharacter::UpdateGameObject()
 {
-
 	auto* ic = GetComponent<MochiFramework::Components::InputComponent>();
 	if (!ic) return;
 	auto* map = ic->GetInputMap();
@@ -19,23 +18,29 @@ void PlayerCharacter::UpdateGameObject()
 
 
 	//	移動　ジャンプボタン
-	if (map->WasActionTriggered("ESC"))
+	if (map->WasActionTriggered("ESC"))	//	右移動
 	{
-
+		MoveRaght();
+	}
+	if (map->WasActionTriggered("ESC"))	//	左移動
+	{
+		MoveLeft();
 	}
 	if (map->WasActionTriggered("ESC"))
 	{
 
 	}
-	if (map->WasActionTriggered("ESC"))
-	{
-
-	}
 
 
-	//	当たり判定の更新
+	Draw();
+}
 
+void PlayerCharacter::Draw()
+{
+	auto* ic = GetComponent<MochiFramework::Components::DX11Renderer2D>();
+	if (!ic) return;
 
+	ic->Draw();
 }
 
 void PlayerCharacter::MoveRaght()
@@ -43,7 +48,7 @@ void PlayerCharacter::MoveRaght()
 	auto* ic = GetComponent<MochiFramework::Components::Transform>();
 	if (!ic) { return; }
 
-	
+	//	移動する変数を描く
 
 }
 
@@ -51,5 +56,8 @@ void PlayerCharacter::MoveLeft()
 {
 	auto* ic = GetComponent<MochiFramework::Components::Transform>();
 	if (!ic) { return; }
+
+	//	移動する変数を描く
+
 }
 
