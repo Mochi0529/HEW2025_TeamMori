@@ -1,7 +1,9 @@
 #include "Area.h"
+#include "SolidObject.h"
 
 Area::Area()
 {
+	//layer1 = new Layer;
 	mLayer_flg = true;
 }
 
@@ -14,31 +16,30 @@ void Area::ToggleHitDetection()
 {
 	if (mLayer_flg == true)//参照範囲Forを試す
 	{
-		/*for (int i = 0; i < Layer1->Objects[ObjCount]; i++)
+		for (int i = 0; i < layer1.GetObjects().size(); i++)
 		{
-			layer1->Objects[i]->hit_flg = true;//Layer1のオブジェクトを前に
+			//layer1.GetObjects()[i].GetCollision() = true;//Layer1のオブジェクトを前に
 		}
-		*/
 
-		/*for(int i = 0; i < Layer2->Objects[ObjCount];i++)
+		for(int i = 0; i < layer2.GetObjects().size();i++)
 		{
-			layer2->Objects[i]->hit_flg = false;//Layer2のオブジェクトを後に
+			//layer2.GetObjects().GetCollision() = false;//Layer2のオブジェクトを後に
 		}
-		*/
+		
 	}
 	else if (mLayer_flg == false)
 	{
-		/*for (int i = 0; i < Layer2->Objects[ObjCount]; i++)
+		for (int i = 0; i < layer2.GetObjects().size(); i++)
 		{
-			layer2->Objects[i]->hit_flg = true;//Layer2のオブジェクトを前に
+			//layer2.GetObjects().GetCollision() = true;//Layer2のオブジェクトを前に
 		}
-		*/
+		
 
-		/*for(int i = 0; i < Layer1->Objects[ObjCount];i++)
+		for(int i = 0; i < layer1.GetObjects().size();i++)
 		{
-			layer1->Objects[i]->hit_flg = false;//Layer1のオブジェクトを後に
+			//layer1.GetObjects().GetCollision() = false;//Layer1のオブジェクトを後に
 		}
-		*/
+		
 	}
 }
 
