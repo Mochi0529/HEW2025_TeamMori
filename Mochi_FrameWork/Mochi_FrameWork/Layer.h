@@ -1,8 +1,15 @@
 #pragma once
-//Object.hをインクルード
+#include "SolidObject.h"
+#include <vector>
+#include"Scene.h"
 
-class Layer
+class Layer : public  MochiFramework::SceneSystem::Scene
 {
 private:
-	//Object
+	std::vector<SolidObject> Objects;
+public:
+	void AddObject(float posX, float posY, float ScaleX, float ScaleY);
+	void LayerUpdate();
+	std::vector<SolidObject>& GetObjects();
+	std::string GetName() const override;
 };

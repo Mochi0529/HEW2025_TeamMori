@@ -20,6 +20,7 @@ private:
 	bool m_isCollision = false;	//	“–‚½‚è”»’è‚ð‚Â‚¯‚é‚©‚Ç‚¤‚©ƒtƒ‰ƒO
 
 public:
+
 	explicit SolidObject(MochiFramework::SceneSystem::Scene* scene) : GameObjectBase(scene)
 	{
 		

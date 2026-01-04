@@ -18,3 +18,13 @@ Area& Stage::GetCurrentArea()
 {
 	return Areas[currentAreaIdx];
 }
+
+//void Stage::SceneUpdate()
+//{
+//	CreateGameObject<SolidObject>();
+//}
+//
+//std::string Stage::GetName() const
+//{
+//	return "Stage";
+//}
