@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -150,8 +150,15 @@
     <ClCompile Include="KadaiGameObject.cpp" />
     <ClCompile Include="KadaiGameObject2.cpp" />
     <ClCompile Include="KadaiScene.cpp" />
+    <ClCompile Include="Layer_Manager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainCamera.cpp" />
     <ClCompile Include="Matrix4.cpp" />
+    <ClCompile Include="PlayerCharacter.cpp" />
+    <ClCompile Include="PrototypeStage.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="ResourcePtr.inl" />
@@ -194,11 +201,18 @@
     <ClInclude Include="KadaiGameObject2.h" />
     <ClInclude Include="KadaiScene.h" />
     <ClInclude Include="Layer.h" />
+    <ClInclude Include="Layer_Manager.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="main.h" />
+    <ClInclude Include="MainCamera.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Matrix4.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshRenderer.h" />
+    <ClInclude Include="PlayerCharacter.h" />
+    <ClInclude Include="PrototypeStage.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="ResourceHandle.h" />
     <ClInclude Include="ResourceManager.h" />

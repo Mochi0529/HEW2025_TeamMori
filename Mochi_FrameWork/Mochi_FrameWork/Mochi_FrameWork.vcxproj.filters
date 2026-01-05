@@ -61,6 +61,9 @@
     <Filter Include="ソース ファイル\Component\Base">
       <UniqueIdentifier>{d0d6ed1e-8e72-4669-94fe-9ac676897a25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\ゲーム遷移">
+      <UniqueIdentifier>{b87d6730-3b98-416d-8a24-978751d5cb31}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Component.cpp">
@@ -164,6 +167,18 @@
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>ソース ファイル\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer_Manager.cpp">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCharacter.cpp">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="PrototypeStage.cpp">
+      <Filter>ヘッダー ファイル\ゲーム遷移</Filter>
+    </ClCompile>
+    <ClCompile Include="MainCamera.cpp">
+      <Filter>ヘッダー ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -310,6 +325,18 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>ソース ファイル\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer_Manager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerCharacter.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="PrototypeStage.h">
+      <Filter>ヘッダー ファイル\ゲーム遷移</Filter>
+    </ClInclude>
+    <ClInclude Include="MainCamera.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
