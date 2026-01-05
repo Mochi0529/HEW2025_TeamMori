@@ -10,14 +10,18 @@
 #include"Texture.h"
 //	コンポーネント
 #include"DX11Renderer2D.h"	//	テクスチャ関係の追加
-#include"Transform.h"		//	座標関係
+#include"Camera.h"
 
 
 class SolidObject :public MochiFramework::GameObjects::GameObjectBase<SolidObject>
 {
 private:
 	static int m_objectCounter;	//	オブジェクトの数をカウントする
-	bool m_isCollision = false;	//	当たり判定をつけるかどうかフラグ
+	bool m_isCollision = true;	//	当たり判定をつけるかどうかフラグ
+
+
+	//	todo: コンポーネントTransformが解決したら削除する
+
 
 public:
 	explicit SolidObject(MochiFramework::SceneSystem::Scene* scene) : GameObjectBase(scene)
@@ -25,11 +29,7 @@ public:
 		
 		m_objectCounter++;
 		//	コンポーネントの追加
-		AddComponent<MochiFramework::Components::DX11Renderer2D>();	//　テクスチャ関係
-		AddComponent<MochiFramework::Components::Transform>();		//	座標関係の追加
-
 		
-	
 		
 	}
 	~SolidObject()
@@ -41,7 +41,6 @@ public:
 
 	void Init()override;	//	情報の初期化
 	void UpdateGameObject() override;	//	更新処理
-	void Draw();	//描画処理
 
 
 	static void SolidObjectCounter();	//	オブジェクトの個数を数える
@@ -50,7 +49,7 @@ public:
 	bool GetIsCollision();
 
 	//	情報を変更する
-	void SetPosition(float x, float y, float z);	//	座標変更
+	void SetPosition(float x, float y, float z);//	座標変更
 	void SetScale(float x, float y, float z);	//	サイズ変更
 	
 	void ChangeCollision();	//	当たり判定の変更

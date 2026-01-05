@@ -19,13 +19,17 @@ void SolidObject::SolidObjectCounter()
 //	情報の初期化
 void SolidObject::Init()
 {
-	//	画像を突っ込む
-	auto* ic = GetComponent<MochiFramework::Components::DX11Renderer2D>();
-	if (!ic)return;
+	//	コンポーネントの追加
+	auto* texture =AddComponent<MochiFramework::Components::DX11Renderer2D>();	//　テクスチャ関係
+	if (!texture)return;
+	texture->Init();
+	texture->SetTexture("asset/test.png");
 
-	ic->SetTexture("asset/test.png");	//	画像のファイル位置を記述しよう
-	SetPosition(10.0f, 10.0f, 0.0f);
 	SetScale(100.0f, 100.0f, 0.0f);
+	SetPosition(0.0f, 0.0f, 0.0f);
+
+	std::cout << "ソリッドオブジェクトの作成" << std::endl;
+	
 }
 
 //	アップデート
@@ -36,47 +40,33 @@ void SolidObject::UpdateGameObject()
 
 
 
-
-
-	Draw();	//	画像の描画
-}
-
-//	画像の描画
-void SolidObject::Draw()
-{
-	auto* ic = GetComponent<MochiFramework::Components::DX11Renderer2D>();
-	if (!ic)return;
-
-	ic->Draw();
-
 }
 
 //	座標の変更
 void SolidObject::SetPosition(float x, float y, float z)
-{
-	auto* ic = GetComponent<MochiFramework::Components::Transform>();
-	if (!ic)return;
-
+{	
+	auto* transCom = GetComponent<MochiFramework::Components::Transform>();
+	if (!transCom)return;
 	//	引数を一つの変数にまとめそれを送る
 	MochiFramework::Math::Vector3 newPosition;
 	newPosition.x = x;
 	newPosition.y = y;
 	newPosition.z = z;
-	ic->SetLocalPosition(newPosition);
+	transCom->SetLocalPosition(newPosition);
+	
 }
 
 //	オブジェクトの大きさを変更する
 void SolidObject::SetScale(float x, float y, float z)
 {
-	auto* ic = GetComponent<MochiFramework::Components::Transform>();
-	if (!ic)return;
-	
+	auto* transCom = GetComponent<MochiFramework::Components::Transform>();
+	if (!transCom)return;
 	//	引数を一つの変数にまとめそれを送る
 	MochiFramework::Math::Vector3 newScale;
 	newScale.x = x;
 	newScale.y = y;
 	newScale.z = z;
-	ic->SetLocalScale(newScale);
+	transCom->SetLocalScale(newScale);
 
 }
 

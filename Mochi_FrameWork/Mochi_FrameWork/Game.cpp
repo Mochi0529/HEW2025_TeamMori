@@ -10,6 +10,9 @@
 
 #include <memory>
 
+//	todo:　林消す
+#include"PrototypeStage.h"
+
 // === 名前空間使用宣言 === //
 using namespace MochiFramework::SceneSystem;
 using namespace MochiFramework::InputSystem;
@@ -39,6 +42,11 @@ namespace MochiFramework::Core
 		mSceneStack.RegisterScene("KadaiScene", [](FrameworkFacade& f) { return std::make_unique<KadaiScene>(f); });
 
 		mSceneStack.ChangeMainScene("KadaiScene");
+
+		//	todo: 林消すやつ
+		mSceneStack.RegisterScene("PrototypeStage", [](FrameworkFacade& f) { return std::make_unique<PrototypeStage>(f); });
+		mEventQueue.Push(SceneEvent::ChangeTo("PrototypeStage"));
+		//	林消すやつ
 
 		return true; // 初期化に成功すればtrueを返す
 	}

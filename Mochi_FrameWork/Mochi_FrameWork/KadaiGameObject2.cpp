@@ -22,6 +22,8 @@ void KadaiGameObject2::UpdateGameObject()
 
 	if (map->WasActionTriggered("Jump")) {
 		scene->CreateGameObject<KadaiGameObject>();
+
+
 	}
 	if (map->WasActionTriggered("ESC"))
 	{

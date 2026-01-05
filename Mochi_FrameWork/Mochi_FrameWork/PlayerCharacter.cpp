@@ -32,7 +32,7 @@ void PlayerCharacter::UpdateGameObject()
 	}
 
 
-	Draw();
+	Draw();	//	
 }
 
 void PlayerCharacter::Draw()
